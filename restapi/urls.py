@@ -4,6 +4,7 @@ from rest_framework import routers
 from django.conf.urls import include, url
 from .api.resources import PersonResource
 from restapi.api import views
+from .api.controller import askme
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
@@ -18,4 +19,5 @@ urlpatterns = [
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/', include(person_resource.urls)),
+    path('api/askme', askme)
 ]
